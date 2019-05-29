@@ -72,11 +72,11 @@ public class Dimension_N_Array {
 		
 		first_Dimension [0][2][0]=100;
 		
+		System.out.println(first_Dimension[0][2]);
 		second_Dimension [0][0][1]=100;
 		
 		first_Dimension [0][0][1]=100;
-		
-		
+		 
 		for(int temp[][] :second_Dimension ){
 			for(int value[]:temp){
 				for(int index:value){
@@ -95,8 +95,7 @@ public class Dimension_N_Array {
 			}
 			System.out.println("세컨드디멘션 끝");
 		}
-		
-		
+		 
 		
 	}
 }
