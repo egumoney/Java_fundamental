@@ -1,12 +1,11 @@
 package java_20190529;
 
 public class CalendarDemo {
-	public static void main(String[] args) {
+	public static void main(String[] args){
 		
 		int year= Integer.parseInt(args[0]);
 		int month= Integer.parseInt(args[1]);
 		int date= Integer.parseInt(args[2]);
-		
 		int preYear=year-1;
 		int preMonth=month-1;
 		int totalCnt=0;
