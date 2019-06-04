@@ -2,6 +2,8 @@ package java_20190604;
 
 public class OverridingDemo {
 	public static void main(String[] args) {
+		//Shape shape= new Rectangle();
+		
 		Triangle t=new Triangle();
 		t.draw();
 		
