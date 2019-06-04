@@ -17,21 +17,17 @@ public class Lottery_proto {
 		// 첫 값입력은 받는다 두와일문 활용?
 		// 현위치로 부터 거꾸로 입력값 확인 없다다음
 		// 중복체크 값이 없다면 값 입력
-
 		boolean isFlag = true; // 입력라인
 		int randomNum = 0;
-
 		for (int i = 0; i < ticket.length; i++) { // num 숫자 만큼 돌린다.
 			for (int k = 0; k < ticket[i].length; k++) { // temp=randomNum;
 				isFlag = true; // 플래그 초기화
 				while (isFlag) {
 					randomNum = (int) (Math.random() * 45) + 1; // 랜덤값 부여
-
 					if (k == 0)	{
 						ticket[i][k] = randomNum;
 						break;
-					}
-					
+					}					
 					for (int now = 0; now < ticket[i].length; now++) {// 중복체크
 						if (randomNum == ticket[i][now]) {// 중복값 확인될 경우 스킵
 							System.out.println("중복 발생");
@@ -39,25 +35,19 @@ public class Lottery_proto {
 							break;// 처음부
 						}
 					} // if()//부합조건....
-
 					ticket[i][k] = randomNum; // 값입력
 				} //
 				totalCnt++;
 				System.out.println("총 카운터=" + totalCnt);
 			} // 실질적으로 로또 1게임 시작.
-
 		} // 횟수만큼 돌린다. 2중포문이든 상관없다.
 		print(ticket);
 		/*
 		 * for (int[] firstLoop : ea) { for (int secondLoop : firstLoop) {
 		 * System.out.print(secondLoop + "\t"); } System.out.println(); }
 		 */
-
 	}
-
-	public void print(int ticket[][]) {
-		// 출력라인
-
+	public void print(int ticket[][]) {	// 출력라인
 		for (int i = 0; i < ticket.length; i++) {
 			for (int k = 0; k < ticket[i].length; k++) {
 				System.out.print(ticket[i][k] + "\t");
@@ -65,9 +55,7 @@ public class Lottery_proto {
 			System.out.println((i + 1) + "라인 끝");
 		}
 	}
-
 	public static void main(String[] args) throws IOException {
-
 		Lottery_proto lott = new Lottery_proto();
 		while (true) {
 			System.out.println("로또복권 갯수를 입력하세요>");
@@ -78,7 +66,6 @@ public class Lottery_proto {
 			lott.inGame(count);
 		}
 	}
-
 	public static String console() throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		return br.readLine();
