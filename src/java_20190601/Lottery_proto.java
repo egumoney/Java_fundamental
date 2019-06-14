@@ -19,6 +19,8 @@ public class Lottery_proto {
 		// 중복체크 값이 없다면 값 입력
 		boolean isFlag = true; // 입력라인
 		int randomNum = 0;
+		int overlapCnt=0;
+		
 		for (int i = 0; i < ticket.length; i++) { // num 숫자 만큼 돌린다.
 			
 			for (int k = 0; k < ticket[i].length; k++) { // temp=randomNum;
@@ -33,19 +35,20 @@ public class Lottery_proto {
 						break;
 					}
 					
-					for (int now = 0; now < ticket[i].length; now++){// 중복체크
-						if (randomNum == ticket[i][now]) {// 중복값 확인될 경우 스킵
-							System.out.println("중복 발생");
-							isFlag = false;// 와일루프 탈출
-							break;// 처음부
+					for (int now = 0; now <k; now++){// 중복체크
+						if (ticket[i][k] == ticket[i][now]||randomNum == ticket[i][now]) {// 중복값 확인될 경우 스킵
+							System.out.println("중복 발생"+randomNum);
+							overlapCnt++;
+							continue;// 처음부
 						}
 					} // for
 					
 					ticket[i][k] = randomNum; // 값입력
+					break;
 				} // end while - flag
 				
 				totalCnt++;
-				System.out.println("총 카운터=" + totalCnt);
+				System.out.println("총 카운터=" + totalCnt+"오버랩 카운터:"+overlapCnt);
 			} // 실질적으로 로또 1게임 시작.
 		
 		

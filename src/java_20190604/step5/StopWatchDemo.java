@@ -13,10 +13,8 @@ public class StopWatchDemo {
 	public static void main(String[] args) {
 		StopMilliWatch sm= new StopMilliWatch();
 		execute(sm);
-		
 		StopNanoWatch sn =new StopNanoWatch();
-		execute(sn);	
-		
+		execute(sn);		
 		StopMicroWatch smc= new StopMicroWatch();
 		execute(smc);		
 	}

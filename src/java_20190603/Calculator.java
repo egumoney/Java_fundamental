@@ -1,4 +1,4 @@
-package java_20190531;
+package java_20190603;
 
 public class Calculator {
 	public int plus(int first,int second){

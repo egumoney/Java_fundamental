@@ -6,4 +6,5 @@ public class StopMilliWatch extends StopWatch{
 	public double getElapsedTime(){
 		return (double)(endTime-startTime)/(double)1000 ;
 	}	
+	
 }
