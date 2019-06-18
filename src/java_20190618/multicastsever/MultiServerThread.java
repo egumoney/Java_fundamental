@@ -48,19 +48,27 @@ public class MultiServerThread implements Runnable {
 				String readLine = br.readLine();
 				if (readLine != null && readLine.equals("exit")) {
 					isStop = true;
-				}
-
-				sendMessage(readLine);
-
-				System.out.println(readLine);
-
+					sendMessage("exit");
+					list.remove(this);
+					System.out.println(readLine);
+					System.out.println("list size:"+list.size());
+					
+				}else{
+					broadCast(readLine);
+					System.out.println(readLine);
+					
+				} 
 				// pw.println();
 
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				// e.printStackTrace();
+				e.printStackTrace();
+				
 				System.out.println("강제로 나가지 마세요 아직은");
 				isStop = true;
+				list.remove(this);
+				System.out.println("list size:"+list.size());
 			}
 
 		}

@@ -82,28 +82,16 @@ public class MultiClient implements ActionListener {
 		jframe.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
 				pw.println("exit");
-				String readLine = null;
-				try {
-					readLine = br.readLine();
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				if (readLine != null && readLine.equals("exit")) {
-					try {
-						if (br != null)
-							br.close();
-						if (pw != null)
-							pw.close();
-						if (socket != null)
-							socket.close();
-
-					} catch (IOException e2) {
-						// TODO Auto-generated catch block
-						e2.printStackTrace();
-					}
-					System.exit(0);
-				}
+				/*
+				 * String readLine = null; try { readLine = br.readLine(); }
+				 * catch (IOException e1) { // TODO Auto-generated catch block
+				 * e1.printStackTrace(); } if(readLine != null &&
+				 * readLine.equals("exit")){ try { if(br != null) br.close();
+				 * if(pw != null) pw.close(); if(socket != null) socket.close();
+				 * 
+				 * } catch (IOException e2) { // TODO Auto-generated catch block
+				 * e2.printStackTrace(); } System.exit(0); }
+				 */
 			}
 		});
 	}
@@ -115,36 +103,29 @@ public class MultiClient implements ActionListener {
 		if (obj == jtf) {
 
 			String message = jtf.getText();
-			
 			// 시스템마다 개행이 다를때 코딩하는거.
 			// System.getProperty("line.separator") => \n이랑 비슷한거
-	//		String readLine = sendMessage(message);
-			jta.append(message);
+			sendMessage(message);
+			// jta.append(readLine);
 			jtf.setText("");
 		} else if (obj == jbtn) {
 
 			String message = jtf.getText();
-			
-	//		String readLine = sendMessage(message);
-			jta.append(message);
+			sendMessage(message);
+			// jta.append(readLine);
 			jtf.setText("");
 		}
 	}
 
 	private void sendMessage(String message) {
 		pw.println(id + " : " + message);// server에게 메세지 보냄
-		
-/*
-		String readLine = null;
-		try {
-			readLine = br.readLine();
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		readLine += System.getProperty("line.separator");
-		return readLine;
-		*/
+		/*
+		 * String readLine = null; try { readLine = br.readLine(); } catch
+		 * (IOException e1) { // TODO Auto-generated catch block
+		 * e1.printStackTrace(); } readLine +=
+		 * System.getProperty("line.separator");
+		 */
+		// return readLine;
 	}
 
 	public void connect() {
@@ -158,12 +139,10 @@ public class MultiClient implements ActionListener {
 
 			InputStream in = socket.getInputStream();
 			br = new BufferedReader(new InputStreamReader(in));
-			
-			MultiClientThread mct= new MultiClientThread(br,jta);
-			Thread t= new Thread(mct);
+
+			MultiClientThread mct = new MultiClientThread(br, jta);
+			Thread t = new Thread(mct);
 			t.start();
-			
-			
 
 		} catch (UnknownHostException e) {
 			// TODO Auto-generated catch block
@@ -177,8 +156,8 @@ public class MultiClient implements ActionListener {
 
 	public static void main(String[] args) {
 		JFrame.setDefaultLookAndFeelDecorated(true); 
-		MultiClient mc = new MultiClient("ohka", "192.168.0.147", 3003);
-		mc.connect();
+		MultiClient uc = new MultiClient("렝", "192.168.0.147", 3003);
+		uc.connect();
 	}
 
 }
